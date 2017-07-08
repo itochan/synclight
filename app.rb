@@ -1,3 +1,5 @@
+require 'json'
+
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra-websocket'
@@ -31,7 +33,9 @@ class App < Sinatra::Base
   end
 
   post '/color/update' do
-    settings.color = params[:color]
+    params = JSON.parse(request.body.read)
+
+    settings.color = params['color']
     settings.sockets.each do |s|
       s.send(settings.color)
     end
