@@ -25,5 +25,6 @@ html
       div v-for="(item, index) in items"
         input type="button" v-on:click="items.splice(index, 1)" value="削除"
         | {{item.comment}}: {{ item.color }} 
+        span.color-preview v-bind:style="{ backgroundColor: item.color }"
         input type="button" v-on:click="updateColor(item.color)" value="実行"
         | {{status}}

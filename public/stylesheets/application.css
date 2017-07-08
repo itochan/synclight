@@ -1,3 +1,10 @@
 #light {
   transition: all 1s;
 }
+
+.color-preview {
+  display: inline-block;
+  border: 1px;
+  width: 1em;
+  height: 1em;
+}
