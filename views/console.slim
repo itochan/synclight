@@ -22,7 +22,8 @@ html
         input type="button" v-on:click="addItem" value="追加"
 
     div#lists
-      div v-for="item in items"
+      div v-for="(item, index) in items"
+        input type="button" v-on:click="items.splice(index, 1)" value="削除"
         | {{item.comment}}: {{ item.color }} 
         input type="button" v-on:click="updateColor(item.color)" value="実行"
         | {{status}}
