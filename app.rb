@@ -28,6 +28,9 @@ class App < Sinatra::Base
     settings.sockets.each do |s|
       s.send(color)
     end
+
+    content_type :json
+    { color: color }.to_json
   end
 
   run! if app_file == $0
