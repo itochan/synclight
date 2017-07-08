@@ -5,6 +5,7 @@ require 'slim'
 
 class App < Sinatra::Base
   set :sockets, []
+  set :color, '#ffffff'
 
   get '/' do
     slim :index
@@ -15,6 +16,7 @@ class App < Sinatra::Base
       request.websocket do |ws|
         ws.onopen do
           settings.sockets << ws
+          ws.send(settings.color)
         end
         ws.onclose do
           settings.sockets.delete(ws)
@@ -24,13 +26,13 @@ class App < Sinatra::Base
   end
 
   post '/color/update' do
-    color = params[:color]
+    settings.color = params[:color]
     settings.sockets.each do |s|
-      s.send(color)
+      s.send(settings.color)
     end
 
     content_type :json
-    { color: color }.to_json
+    { color: settings.color }.to_json
   end
 
   run! if app_file == $0
