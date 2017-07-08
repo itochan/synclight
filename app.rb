@@ -26,6 +26,10 @@ class App < Sinatra::Base
     end
   end
 
+  get '/console' do
+    slim :console
+  end
+
   post '/color/update' do
     settings.color = params[:color]
     settings.sockets.each do |s|

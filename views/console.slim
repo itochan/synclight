@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    script src="javascripts/vue.js" type="text/javascript"
+    link href="stylesheets/application.css" rel="stylesheet"
+    title 光るやつの管理画面
+    
+  body
+    h1 光るやつの管理画面
+    
+    div#edit
+      p
+        label for="comment" コメント: 
+        input v-model="comment" placeholder="こめんと"
+        |  
+        label for="color" 色: 
+        input v-model="color" placeholder="#ffffff"
+        |  
+        input type="button" v-on:click="addItem" value="追加"
+
+    div#lists
+      div v-for="item in items"
+        | {{item.comment}}: {{ item.color }}
+
+    script src="javascripts/console.js" type="text/javascript"
