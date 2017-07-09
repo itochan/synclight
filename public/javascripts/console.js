@@ -22,7 +22,7 @@ window.onload = function () {
       loadConfig: function (item) {
         axios.get('/config/load/' + item)
         .then(function (res) {
-          lists.items = res.data.config;
+          lists.items = res.data;
         })
         .catch(function (err) {
           alert("fail!");
