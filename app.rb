@@ -32,6 +32,13 @@ class App < Sinatra::Base
     slim :console
   end
 
+  get '/console/status' do
+    content_type :json
+    {
+      connection: settings.sockets.size
+    }.to_json
+  end
+
   put '/config/upload' do
     content_type :json
 

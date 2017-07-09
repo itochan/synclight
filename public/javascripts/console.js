@@ -1,4 +1,29 @@
 window.onload = function () {
+  var status = new Vue({
+    el: '#status',
+    data: {
+      status: {
+        connection: 0
+      }
+    },
+    methods: {
+      refresh: function () {
+        var self = this;
+        setInterval(function () {
+          axios.get('/console/status')
+          .then(function (res) {
+            self.status = res.data;
+          })
+          .catch(function (err) {
+            console.log("fail!");
+          });
+
+        }, 1000);
+      }
+    }
+  });
+  status.refresh();
+
   var config = new Vue({
     el: "#config",
     data: {
