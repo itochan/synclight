@@ -1,6 +1,6 @@
 require 'json'
 
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra-websocket'
 
@@ -78,4 +78,6 @@ class App < Sinatra::Base
     content_type :json
     { color: settings.color }.to_json
   end
+
+  run! if app_file == $0
 end
