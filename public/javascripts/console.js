@@ -60,4 +60,12 @@ window.onload = function () {
       }
     }
   });
+
+  axios.get('/config/list')
+  .then(function (res) {
+    config.items = res.data;
+  })
+  .catch(function (err) {
+    alert("fail!");
+  });
 }

@@ -48,6 +48,11 @@ class App < Sinatra::Base
     return { config: filename, status: "success" }.to_json
   end
 
+  get '/config/list' do
+    content_type :json
+    return Dir.glob('public/config/*.json').map {|f| File.basename(f) }.to_json
+  end
+
   get '/config/load/:name' do
     content_type :json
 
