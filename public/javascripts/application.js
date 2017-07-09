@@ -1,5 +1,5 @@
 (function (){
-  window.onload = function(){
+  window.onload = function connect() {
     var wsProtocol = window.location.protocol == 'https:' ? 'wss' : 'ws';
     var ws = new WebSocket(wsProtocol + '://' + window.location.host + '/websocket');
 
@@ -10,6 +10,10 @@
     }
     ws.onclose = function() {
       console.log('connection closed');
+      console.log('retrying...');
+      setTimeout(function () {
+        connect()
+      }, 2000);
     }
     ws.onmessage = function(m) {
       light.style.backgroundColor = m.data;
