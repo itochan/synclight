@@ -44,8 +44,8 @@ window.onload = function () {
               alert("error!!: " + err);
             });
       },
-      loadConfig: function (item) {
-        axios.get('/config/load/' + item)
+      loadConfig: function () {
+        axios.get('/config/load/' + this.selected)
         .then(function (res) {
           lists.items = res.data;
         })

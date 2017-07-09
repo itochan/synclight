@@ -18,8 +18,9 @@ html
     div#config
       p
         | 設定選択:&nbsp;
-        select v-for="(item, index) in items" v-model="selected" v-on:change="loadConfig(item)"
+        select v-model="selected" v-on:change="loadConfig()"
           option
+          option v-for="(item, index) in items"
             | {{item}}
       p
         | 設定アップロード:&nbsp;
