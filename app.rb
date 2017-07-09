@@ -47,6 +47,13 @@ put '/config/upload' do
   return { config: filename, status: "success" }.to_json
 end
 
+get '/config/load/:name' do
+  content_type :json
+
+  save_path = "./public/config/#{params[:name]}"
+  return File.read(save_path)
+end
+
 post '/color/update' do
   params = JSON.parse(request.body.read)
 

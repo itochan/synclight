@@ -13,7 +13,12 @@ html
     
     div#config
       p
-        | 設定ファイル:&nbsp;
+        | 設定選択:&nbsp;
+        select v-for="(item, index) in items" v-model="selected" v-on:change="loadConfig(item)"
+          option
+            | {{item}}
+      p
+        | 設定アップロード:&nbsp;
         input v-model="name" placeholder="設定名"
         input id="file" type="file"
         input v-on:click="upload" type="button" value="アップロード"

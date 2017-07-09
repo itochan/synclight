@@ -1,6 +1,10 @@
 window.onload = function () {
   var config = new Vue({
     el: "#config",
+    data: {
+      selected: "",
+      items: ["hamori.json"]
+    },
     methods: {
       upload: function () {
         var data = new FormData();
@@ -9,10 +13,20 @@ window.onload = function () {
         axios.put('/config/upload', data, null)
             .then(function (res) {
               alert("success!!");
+              location.reload();
             })
             .catch(function (err) {
               alert("error!!: " + err);
             });
+      },
+      loadConfig: function (item) {
+        axios.get('/config/load/' + item)
+        .then(function (res) {
+          lists.items = res.data.config;
+        })
+        .catch(function (err) {
+          alert("fail!");
+        });
       }
     }
   });
