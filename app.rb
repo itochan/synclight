@@ -6,10 +6,10 @@ require 'sinatra-websocket'
 
 require 'slim'
 
-set :sockets, []
-set :color, '#ffffff'
-
 class App < Sinatra::Base
+  set :sockets, []
+  set :color, '#ffffff'
+
   get '/' do
     slim :index
   end
