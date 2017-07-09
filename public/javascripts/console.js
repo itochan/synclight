@@ -3,7 +3,8 @@ window.onload = function () {
     el: '#status',
     data: {
       status: {
-        connection: 0
+        connection: 0,
+        color: '#fff'
       }
     },
     methods: {

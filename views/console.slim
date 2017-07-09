@@ -13,7 +13,9 @@ html
     
     div#status
       p
-        | 接続数: {{status.connection}}
+        | 接続数: {{status.connection}}&nbsp;
+        | 現在の色: {{status.color}}
+        span.color-preview v-bind:style="{ backgroundColor: status.color }"
 
     div#config
       p

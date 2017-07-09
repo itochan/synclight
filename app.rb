@@ -35,7 +35,8 @@ class App < Sinatra::Base
   get '/console/status' do
     content_type :json
     {
-      connection: settings.sockets.size
+      connection: settings.sockets.size,
+      color: settings.color
     }.to_json
   end
 
