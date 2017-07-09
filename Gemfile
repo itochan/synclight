@@ -4,3 +4,5 @@ gem 'sinatra-contrib'
 gem 'sinatra-websocket'
 
 gem 'slim'
+
+gem 'pry'
