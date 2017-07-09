@@ -95,6 +95,9 @@ window.onload = function () {
         .catch(function (err) {
           alert("error!!: " + err);
         });
+      },
+      apply: function () {
+        this.items = JSON.parse(this.editConfig);
       }
     }
   });

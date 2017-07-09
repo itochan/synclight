@@ -53,3 +53,10 @@ html
         br
         input v-model="name" placeholder="保存名"
         input type="button" v-on:click="save" value="保存"
+
+      p
+        | 編集:&nbsp;
+        br
+        textarea cols="40" rows="10" v-model="editConfig"
+        br
+        input type="button" v-on:click="apply" value="反映"
