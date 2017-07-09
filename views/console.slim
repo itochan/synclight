@@ -44,3 +44,8 @@ html
         span.color-preview v-bind:style="{ backgroundColor: item.color }"
         input type="button" v-on:click="updateColor(item.color)" value="実行"
         | {{status}}
+
+      p
+        | 現在の設定:&nbsp;
+        br
+        textarea cols="40" rows="10" v-model="JSON.stringify(items, null, '  ')"
