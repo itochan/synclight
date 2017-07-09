@@ -1,4 +1,22 @@
 window.onload = function () {
+  var config = new Vue({
+    el: "#config",
+    methods: {
+      upload: function () {
+        var data = new FormData();
+        data.append('name', this.name);
+        data.append('file', document.getElementById('file').files[0]);
+        axios.put('/config/upload', data, null)
+            .then(function (res) {
+              alert("success!!");
+            })
+            .catch(function (err) {
+              alert("error!!: " + err);
+            });
+      }
+    }
+  });
+
   var edit = new Vue({
     el: "#edit",
     methods: {
@@ -9,7 +27,7 @@ window.onload = function () {
         });
       }
     }
-  })
+  });
 
   var lists = new Vue({
     el: '#lists',
@@ -27,5 +45,5 @@ window.onload = function () {
         });
       }
     }
-  })
+  });
 }

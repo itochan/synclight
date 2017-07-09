@@ -31,6 +31,22 @@ get '/console' do
   slim :console
 end
 
+put '/config/upload' do
+  content_type :json
+
+  unless params[:file] || params[:name]
+    return { status: "fail!" }.to_json
+  end
+
+  filename = "#{params[:name]}.json"
+  save_path = "./public/config/#{filename}"
+  File.open(save_path, 'wb') do |f|
+		p params[:file][:tempfile]
+		f.write params[:file][:tempfile].read
+  end
+  return { config: filename, status: "success" }.to_json
+end
+
 post '/color/update' do
   params = JSON.parse(request.body.read)
 
