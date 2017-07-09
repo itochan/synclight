@@ -42,15 +42,19 @@ class App < Sinatra::Base
   put '/config/upload' do
     content_type :json
 
-    unless params[:file] || params[:name]
+    if !params[:text] && (!params[:file] || !params[:name])
       return { status: "fail!" }.to_json
     end
 
     filename = "#{params[:name]}.json"
+    if params[:text]
+      filebody = params[:file]
+    else
+      filebody = params[:file][:tempfile].read
+    end
     save_path = "./public/config/#{filename}"
     File.open(save_path, 'wb') do |f|
-      p params[:file][:tempfile]
-      f.write params[:file][:tempfile].read
+      f.write filebody
     end
     return { config: filename, status: "success" }.to_json
   end

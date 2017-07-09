@@ -50,3 +50,6 @@ html
         | 現在の設定:&nbsp;
         br
         textarea cols="40" rows="10" v-model="JSON.stringify(items, null, '  ')"
+        br
+        input v-model="name" placeholder="保存名"
+        input type="button" v-on:click="save" value="保存"

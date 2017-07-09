@@ -82,6 +82,19 @@ window.onload = function () {
         .catch(function (error) {
           this.status = "fail!";
         });
+      },
+      save: function () {
+        var params = new URLSearchParams();
+        params.append("text", true);
+        params.append('name', this.name);
+        params.append('file', JSON.stringify(this.items, null, '  '));
+        axios.put('/config/upload', params, null)
+        .then(function (res) {
+          alert("success!!");
+        })
+        .catch(function (err) {
+          alert("error!!: " + err);
+        });
       }
     }
   });
