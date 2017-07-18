@@ -57,19 +57,19 @@ class App < Sinatra::Base
     File.open(save_path, 'wb') do |f|
       f.write filebody
     end
-    return { config: filename, status: "success" }.to_json
+    { config: filename, status: "success" }.to_json
   end
 
   get '/config/list' do
     content_type :json
-    return Dir.glob('public/config/*.json').map {|f| File.basename(f) }.to_json
+    Dir.glob('public/config/*.json').map {|f| File.basename(f) }.to_json
   end
 
   get '/config/load/:name' do
     content_type :json
 
     save_path = "./public/config/#{params[:name]}"
-    return File.read(save_path)
+    File.read(save_path)
   end
 
   post '/color/update' do
