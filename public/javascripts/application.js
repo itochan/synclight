@@ -1,4 +1,11 @@
 (function (){
+  supportWebSocket = 'WebSocket' in window;
+  if (!supportWebSocket) {
+    console.log("WebSocket is not supported.");
+    setTimeout("location.reload()", 1500);
+    return;
+  }
+
   window.onload = function connect() {
     var wsProtocol = window.location.protocol == 'https:' ? 'wss' : 'ws';
     var ws = new WebSocket(wsProtocol + '://' + window.location.host + '/websocket');
