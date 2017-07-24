@@ -1,4 +1,4 @@
-(function (){
+(function () {
   supportWebSocket = 'WebSocket' in window;
   if (!supportWebSocket) {
     console.log("WebSocket is not supported.");
